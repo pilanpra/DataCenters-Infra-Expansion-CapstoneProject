@@ -1,0 +1,40 @@
+STATE,CITY,LOCATION,ENERGY,AREA,IT EQUIPMENT POWER,PUE,FULL_CABINETS,PARTIAL_CABINETS,SHARED_RACKSPACE,CAGES,SUITES,BUILD_TO_SUIT,FOOTPRINTS,REMOTE_HANDS,YEAR_OPERATIONAL,INTERNET_EXCHANGE_POINTS
+FL,Miami,36 NE 2nd St (MIA10),1.3,10200,0.91,1.428571429,True,True,True,True,True,True,True,True,1925,1.0
+FL,Miami,RadiusDC Miami I,9.2,15795,6.44,1.428571429,True,True,True,True,True,True,True,True,2001,
+FL,Miami,Volico Miami 2,10.0,5000,7.0,1.428571429,True,True,True,True,True,True,True,True,1925,
+FL,Miami,Raeden MIA2,3.0,32000,2.1,1.428571429,True,True,True,True,True,True,True,True,2006,
+FL,Orlando,CoreSite Orlando (OR1),7.0,130000,4.9,1.428571429,True,True,True,True,True,False,True,True,1984,1.0
+FL,Orlando,Signal Hill Telecom Center,13.0,115000,9.1,1.428571429,True,True,True,True,True,True,True,True,2000,
+ID,Boise,Ark Data Centers Boise 1,1.0,10000,0.7,1.428571429,True,True,True,True,True,True,True,True,2014,
+ID,Boise,Tonaquint Boise Data Center,2.0,8500,1.4,1.428571429,True,True,True,True,True,True,True,True,2000,
+NY,New York,60 Hudson Street (JFK12),2.5,38400,1.75,1.428571429,True,True,True,True,True,True,True,True,1930,4.0
+NY,New York,111 Eight Avenue (JFK10),5.5,50100,3.85,1.428571429,True,True,True,True,True,True,True,True,1932,2.0
+NY,Orangeburg,1 Ramland,12.0,100000,8.4,1.428571429,True,True,True,True,True,True,True,True,2017,
+NY,Garden City,Opti9 NY1,4.0,25000,2.8,1.428571429,True,True,True,True,True,True,True,True,2002,1.0
+NY,New York,Hudson InterXchange,6.0,120000,4.2,1.428571429,False,False,True,True,True,False,True,True,2011,
+WA,Seattle,2001 Sixth Avenue (SEA10),19.5,398600,13.65,1.428571429,True,True,True,True,True,True,True,True,1981,
+WA,Seattle,The Westin Building,19.0,300000,13.3,1.428571429,False,False,False,False,False,False,False,False,1981,2.0
+WA,Seattle,ColoCrossing SEA1,10.0,18000,7.0,1.428571429,True,True,True,True,True,True,True,True,1999,
+WA,Seattle,ColoInSeattle.com,2.0,18000,1.4,1.428571429,True,True,True,True,True,True,True,True,2001,
+VA,Ashburn,43830 Devin Shafron Drive (IAD24),6.8,57700,4.76,1.428571429,False,False,False,False,False,False,False,False,2011,
+VA,Ashburn,"44274 Round Table Plaza, Bldg L (IAD39)",96.3,469600,67.41,1.428571429,False,False,False,False,False,False,False,False,2017,1.0
+VA,Ashburn,"44372 Round Table Plaza, Bldg M (IAD40)",24.0,69600,16.8,1.428571429,False,False,False,False,False,False,False,False,2017,
+VA,Ashburn,43791 Devin Shafron Drive (IAD14),6.9,51400,4.83,1.428571429,False,False,False,False,False,False,False,False,2010,
+VA,Ashburn,43881 Devin Shafron Drive (IAD12),9.0,57100,6.3,1.428571429,False,False,False,False,False,False,False,False,2001,
+VA,Ashburn,43940 Digital Loudoun Plaza (IAD35),26.4,223800,18.48,1.428571429,False,False,False,False,False,False,False,False,2013,
+VA,Ashburn,"22124 Broderick Drive, Bldg R (IAD42)",48.0,208200,33.6,1.428571429,False,False,False,False,False,False,False,False,2021,
+VA,Ashburn,NTT Ashburn VA1,12.6,64723,8.82,1.428571429,False,False,False,False,False,False,False,False,2000,
+VA,Ashburn,Aligned IAD-02,120.0,283023,84.0,1.428571429,False,False,False,False,False,False,False,False,2020,
+CA,Los Angeles,600 West 7th Street (LAX10),9.0,70300,6.3,1.428571429,True,True,True,True,True,True,True,True,1934,1.0
+CA,Los Angeles,2260 E El Segundo Blvd (LAX12),7.1,66800,4.97,1.428571429,True,True,True,True,True,True,True,True,1979,
+CA,Los Angeles,Hivelocity - Los Angeles 2,10.0,490000,7.0,1.428571429,True,True,True,True,True,True,True,True,2000,
+CA,Los Angeles,West 7 Center,16.9,150000,11.83,1.428571429,True,True,True,True,True,False,True,True,2016,
+CA,Los Angeles,Prime Los Angeles,33.0,110310,23.1,1.428571429,True,True,True,True,True,True,True,True,2024,
+CA,Los Angeles,Converge Technology Solutions Data Center,1.0,6000,0.7,1.428571429,True,True,True,True,True,True,True,True,2006,
+CA,Los Angeles,Crown Castle Los Angeles LA1,1.0,18400,0.7,1.428571429,True,True,True,True,True,True,True,True,1998,
+CA,Los Angeles,Crown Castle Los Angeles LA2,1.0,6491,0.7,1.428571429,True,True,True,True,True,True,True,True,2005,
+CA,Los Angeles,Subrigo - 650 South Grand,2.0,6000,1.4,1.428571429,True,True,True,True,True,True,True,True,1998,
+CA,Los Angeles,Prime Sacramento Data Center Campus,26.0,114711,18.2,1.428571429,True,True,True,True,True,True,True,True,2019,
+CA,Los Angeles,Quest Roseville HABC,8.0,20000,5.6,1.428571429,True,True,True,True,True,True,True,True,2014,
+CA,Los Angeles,Quest McClellan BRC,6.0,30,4.2,1.428571429,True,True,True,True,True,True,True,True,2008,
+CA,Los Angeles,Conscious Data Centers,5.0,50000,3.5,1.428571429,True,True,True,True,True,True,True,True,2019,
