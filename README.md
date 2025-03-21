@@ -60,3 +60,25 @@ This project focuses on optimizing the **expansion of data center infrastructure
 ---
 
 ## 📁 Repository Structure
+📊 /data → Raw and cleaned data 📈 /notebooks → Jupyter notebooks for EDA, clustering, modeling 🧠 /models → Optimization models and evaluation scripts 🧾 README.md → Project documentation
+
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please fork this repository and open a pull request with suggested changes or enhancements.
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🔗 References
+
+- [https://www.datacentermap.com](https://www.datacentermap.com)
+- [https://brightlio.com/data-center-stats](https://brightlio.com/data-center-stats)
+
