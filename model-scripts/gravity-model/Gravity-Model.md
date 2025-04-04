@@ -1,9 +1,8 @@
-
 # Gravity Model for Data Center Site Selection in India
 
 ## 1. Overview of the Gravity Model
 
-The **gravity model** is a quantitative method used to estimate the attractiveness or suitability of different locations for establishing a data center. Inspired by Newton's law of gravity, where the attraction between two bodies is proportional to their mass and inversely proportional to the square of the distance, the model in our context adapts this concept for evaluating potential data center sites. 
+The **gravity model** is a quantitative method used to estimate the attractiveness or suitability of different locations for establishing a data center. Inspired by Newton's law of gravity, where the attraction between two bodies is proportional to their mass and inversely proportional to the square of the distance, the model in our context adapts this concept for evaluating potential data center sites.
 
 Instead of physical distance, we assess multiple **influencing factors** such as cost, infrastructure, environmental risk, and regulatory support. The goal is to compute an **attraction score** for each location, where a higher score indicates a more suitable site for data center deployment.
 
@@ -32,16 +31,16 @@ Each parameter was chosen for its direct impact on the feasibility and long-term
 
 Weights were assigned to parameters based on their **relative importance** in determining the overall viability and cost-effectiveness of a data center:
 
-| Parameter                  | Type      | Weight | Justification |
-|---------------------------|-----------|--------|---------------|
-| Energy Supply Cost        | Cost      | 0.20   | Electricity is the largest operational cost for data centers. |
-| Network Resilience Index  | Benefit   | 0.20   | Critical for data transmission and uptime. |
-| Land Cost                 | Cost      | 0.15   | Major initial capital expense. |
-| Renewable Energy Avail.   | Benefit   | 0.10   | Supports sustainability and future cost efficiency. |
-| Regulatory/Climate Index  | Benefit   | 0.10   | Reduces deployment risks and speeds up approvals. |
-| Technical Workforce Cost  | Cost      | 0.05   | Smaller impact post-setup; moderate importance. |
-| Water Supply Cost         | Cost      | 0.05   | Important for cooling, but relatively low in cost. |
-| Land Availability Index   | Benefit   | 0.05   | Determines how easily a site can be acquired. |
+| Parameter                | Type    | Weight | Justification                                                 |
+| ------------------------ | ------- | ------ | ------------------------------------------------------------- |
+| Energy Supply Cost       | Cost    | 0.20   | Electricity is the largest operational cost for data centers. |
+| Network Resilience Index | Benefit | 0.20   | Critical for data transmission and uptime.                    |
+| Land Cost                | Cost    | 0.15   | Major initial capital expense.                                |
+| Renewable Energy Avail.  | Benefit | 0.10   | Supports sustainability and future cost efficiency.           |
+| Regulatory/Climate Index | Benefit | 0.10   | Reduces deployment risks and speeds up approvals.             |
+| Technical Workforce Cost | Cost    | 0.05   | Smaller impact post-setup; moderate importance.               |
+| Water Supply Cost        | Cost    | 0.05   | Important for cooling, but relatively low in cost.            |
+| Land Availability Index  | Benefit | 0.05   | Determines how easily a site can be acquired.                 |
 
 The total sum of weights is 1.0 to ensure balanced scoring.
 
@@ -52,19 +51,24 @@ The total sum of weights is 1.0 to ensure balanced scoring.
 We use **min-max normalization** to bring all parameters onto a comparable 0 to 1 scale. This is essential because different parameters (e.g., water cost vs. land availability index) are measured in different units and ranges.
 
 ### Benefits of Min-Max Normalization:
+
 - Prevents any one parameter from dominating due to scale.
 - Ensures that higher normalized values always represent more favorable conditions.
 - Allows both cost and benefit parameters to be incorporated uniformly.
 
 ### Two Forms of Normalization:
+
 - For **cost parameters** (lower is better):
-  ```
-  x'_i = (max(x) - x_i) / (max(x) - min(x))
-  ```
+
+```
+x'_i = (max(x) - x_i) / (max(x) - min(x))
+```
+
 - For **benefit parameters** (higher is better):
-  ```
-  x'_i = (x_i - min(x)) / (max(x) - min(x))
-  ```
+
+```
+x'_i = (x_i - min(x)) / (max(x) - min(x))
+```
 
 ---
 
@@ -73,15 +77,19 @@ We use **min-max normalization** to bring all parameters onto a comparable 0 to 
 We calculate the **composite attraction score** for each city using the following weighted sum:
 
 ### General Formula:
+
 ```
 Score_i = ∑ (w_j * norm(x_ij))
 ```
+
 Where:
-- `Score_i` = Final gravity score for city *i*
-- `w_j` = Weight assigned to parameter *j*
-- `norm(x_ij)` = Normalized value of parameter *j* for city *i*
+
+- `Score_i` = Final gravity score for city _i_
+- `w_j` = Weight assigned to parameter _j_
+- `norm(x_ij)` = Normalized value of parameter _j_ for city _i_
 
 ### Expanded Example:
+
 ```
 Score_i = 0.05 * norm(Water_i) +
           0.20 * norm(Energy_i) +
@@ -101,3 +109,61 @@ Each city's normalized parameter values are multiplied by their respective weigh
 
 This gravity model provides a robust and data-driven method for selecting optimal data center locations in India. By incorporating real-world constraints and industry-relevant weights, it offers a practical framework for infrastructure planning that can be refined with more granular data and localized insights.
 
+---
+
+## 7. Mathematical Notation for the Gravity Model
+
+This section formalizes the gravity model using mathematical notation for clarity and rigor.
+
+### Definitions:
+
+Let:
+
+- \( i \in \{1, 2, ..., n\} \) be the index for each city (where \( n = 13 \)).
+- \( j \in \{1, 2, ..., m\} \) be the index for each parameter (where \( m = 8 \)).
+- \( x\_{ij} \) be the raw value of parameter \( j \) for city \( i \).
+- \( w*j \) be the weight assigned to parameter \( j \), such that \( \sum*{j=1}^{m} w_j = 1 \).
+- \( \tilde{x}\_{ij} \) be the normalized value of parameter \( j \) for city \( i \).
+
+### Normalization:
+
+We normalize all parameters to bring them to a 0–1 scale.
+
+- For **benefit-type parameters** (higher is better):
+
+\[
+\tilde{x}_{ij} = \frac{x_{ij} - \min(x_j)}{\max(x_j) - \min(x_j)}
+\]
+
+- For **cost-type parameters** (lower is better):
+
+\[
+\tilde{x}_{ij} = \frac{\max(x_j) - x_{ij}}{\max(x_j) - \min(x_j)}
+\]
+
+### Composite Gravity Score:
+
+The final **attraction score** \( A_i \) for city \( i \) is calculated as:
+
+\[
+A*i = \sum*{j=1}^{m} w*j \cdot \tilde{x}*{ij}
+\]
+
+Where:
+
+- \( A_i \in [0, 1] \), and a higher value indicates a more attractive location.
+
+### Parameter Mapping and Weights:
+
+| Parameter                       | Symbol        | Type    | Weight \( w_j \) |
+| ------------------------------- | ------------- | ------- | ---------------- |
+| Water Supply Cost               | \( x\_{i1} \) | Cost    | 0.05             |
+| Energy Supply Cost              | \( x\_{i2} \) | Cost    | 0.20             |
+| Technical Workforce Cost        | \( x\_{i3} \) | Cost    | 0.05             |
+| Renewable Resource Availability | \( x\_{i4} \) | Benefit | 0.10             |
+| Land Cost                       | \( x\_{i5} \) | Cost    | 0.15             |
+| Land Availability Index         | \( x\_{i6} \) | Benefit | 0.05             |
+| Network Resilience Index        | \( x\_{i7} \) | Benefit | 0.20             |
+| Climate Resilience Index        | \( x\_{i8} \) | Benefit | 0.10             |
+
+This formal expression enables replication and validation of the model in academic or professional settings.
