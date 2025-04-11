@@ -112,3 +112,8 @@ python nsga_aggregator.py
 
 Make sure to have `data-final.csv` in the working directory.
 
+
+
+![image](https://github.com/user-attachments/assets/cf2008dc-9a49-4f72-8e97-cb695a37a91a)
+
+
