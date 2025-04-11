@@ -100,20 +100,15 @@ This model enables infrastructure teams to:
 
 ## Outputs
 
-- Pareto-optimal set of data centers (solutions)
 - Weighted normalized scores for comparison
-- Ready-to-export CSV or JSON for reporting and dashboarding
 
 ---
 
 ## How to Run
 
 ```bash
-python nsga_model.py
+python nsga_aggregator.py
 ```
 
 Make sure to have `data-final.csv` in the working directory.
 
----
-
-© 2025 Your Company Name
