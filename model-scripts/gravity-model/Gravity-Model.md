@@ -61,7 +61,7 @@ We use **min-max normalization** to bring all parameters onto a comparable 0 to 
 - For **cost parameters** (lower is better):
 
 ```
-x'_i = (max(x) - x_i) / (max(x) - min(x))
+$x'_i = (max(x) - x_i) / (max(x) - min(x))$
 ```
 
 - For **benefit parameters** (higher is better):
