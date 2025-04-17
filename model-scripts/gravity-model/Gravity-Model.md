@@ -84,7 +84,7 @@ $Score_i = ∑ (w_j * norm(x_ij))$
 
 Where:
 
-- `Score_i` = Final gravity score for city _i_
+- $Score_i$ = Final gravity score for city _i_
 - `w_j` = Weight assigned to parameter _j_
 - `norm(x_ij)` = Normalized value of parameter _j_ for city _i_
 
