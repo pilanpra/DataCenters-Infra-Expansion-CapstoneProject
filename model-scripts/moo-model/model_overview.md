@@ -1,119 +1,83 @@
+# NSGA-II Model for Multi-Objective Data Center Selection
 
-# Multi-Objective Optimization Model for Data Center Selection
+## 1. Overview of the NSGA-II Model
 
-## Overview
+The Non-Dominated Sorting Genetic Algorithm II (NSGA-II) is a powerful evolutionary optimization technique used to solve multi-objective decision-making problems. In the context of data center site selection, the NSGA-II model enables the identification of optimal combinations of data center facilities that balance various competing criteria such as energy efficiency, connectivity, service availability, and infrastructure age.
 
-This project implements a multi-objective optimization model using **NSGA-II** (Non-dominated Sorting Genetic Algorithm II) to identify optimal data center sites based on multiple criteria:
+Unlike single-objective optimization models, NSGA-II produces a **Pareto front**: a set of non-dominated solutions where no single solution is superior across all objectives. This approach is particularly valuable in infrastructure planning, where trade-offs between cost, performance, and risk must be carefully evaluated.
 
-- Energy Efficiency (PUE)
-- Connectivity (IXP Count)
-- Service Availability
-- Facility Age
+## 2. Collected Parameters and Objective Functions
 
-The optimization is done using the DEAP library in Python.
+The data used in this model includes a wide range of attributes for each data center facility. These attributes are derived from publicly available databases and provider information.
 
----
+**Key Parameters and Objective Functions:**
 
-## Objectives
+- **State Aggregated PUE** (Power Usage Effectiveness): Total energy efficiency score *(minimize)*
+- **State Aggregated IXP Count**: Total number of Internet Exchange Points *(maximize)*
+- **Service Availability Score**: Sum of availability indicators like cages, racks, suites, etc. *(maximize)*
+- **Facility Age**: Calculated as $(2025 - \text{Year Operational})$ *(minimize)*
 
-We aim to minimize or maximize the following objectives:
+**Constraints:**
 
-1. **Minimize Power Usage Effectiveness (PUE)**  
-   Lower PUE implies better energy efficiency.
-   $$
-   f_1 = \sum_{i \in S} PUE_i
-   $$
+- IT equipment power $\geq 1$ MW  
+- Floor area $\geq 10{,}000$ sqft  
+- Service availability score $\geq 4$
 
-2. **Maximize Internet Exchange Point (IXP) Count**  
-   Higher IXP count suggests better connectivity.
-   $$
-   f_2 = -\sum_{i \in S} IXP_i
-   $$
+## 3. Justification of Objective Weights in the Final Scoring
 
-3. **Maximize Service Availability Score**  
-   Summation of various service features at the site.
-   $$
-   f_3 = -\sum_{i \in S} ServiceScore_i
-   $$
+| Objective            | Type     | Weight | Justification                                                                 |
+|----------------------|----------|--------|------------------------------------------------------------------------------|
+| PUE                  | Cost     | 0.40   | Directly influences energy cost and environmental sustainability.            |
+| IXP Count            | Benefit  | 0.30   | Reflects network performance and customer experience.                        |
+| Service Availability | Benefit  | 0.20   | Indicates operational flexibility and quality of services provided.          |
+| Facility Age         | Cost     | 0.10   | Older facilities may require upgrades; newer ones offer modern infrastructure.|
 
-4. **Minimize Facility Age**  
-   Newer data centers are often more efficient.
-   $$
-   f_4 = \frac{1}{|S|} \sum_{i \in S} Age_i
-   $$
+*The total sum of weights is 1.0 to ensure a balanced scoring framework aligned with strategic priorities.*
 
----
+## 4. Normalization Strategy
 
-## Constraints
+To fairly compare data across differing units and ranges, **min-max normalization** is used for all scoring metrics.
 
-A data center is considered **valid** if it satisfies:
+### Normalization Methods
 
-- IT Equipment Power ≥ 1
-- AREA ≥ 10,000 sqft
-- Service Availability Score ≥ 4
+- **For cost-type objectives (lower is better):**
 
-Mathematically:
-$$
-Valid(i) = 
-\begin{cases}
-1 & \text{if } Power_i \geq 1 \land Area_i \geq 10000 \land ServiceScore_i \geq 4 \\
-0 & \text{otherwise}
-\end{cases}
-$$
+ ### $$x'_i = \frac{\max(x) - x_i}{\max(x) - \min(x)}$$
 
----
+- **For benefit-type objectives (higher is better):**
 
-## Weighted Scoring
+ ### $$x'_i = \frac{x_i - \min(x)}{\max(x) - \min(x)}$$
 
-After obtaining the Pareto front, each solution is scored using a weighted normalization method for business prioritization:
+### Why Normalize?
 
-Weights:
-- PUE: 0.4 (to minimize)
-- IXP Count: 0.3 (to maximize)
-- Service Score: 0.2 (to maximize)
-- Facility Age: 0.1 (to minimize)
+- Ensures scale-invariant comparison across metrics (e.g., PUE vs. IXP)
+- Prevents any one metric from dominating due to its magnitude
+- Supports intuitive interpretation of weights
 
-The final weighted score for each data center is:
-$$
-WeightedScore_i = -0.4 \cdot norm(PUE_i) + 0.3 \cdot norm(IXP_i) + 0.2 \cdot norm(ServiceScore_i) - 0.1 \cdot norm(Age_i)
-$$
+### 5. Final Scoring Formula
 
----
+Once normalization is applied, a weighted score is calculated for each solution on the Pareto front.
 
-## Tools and Libraries
+### General Formula
 
-- Python
-- DEAP (Distributed Evolutionary Algorithms in Python)
-- pandas, matplotlib
+![Alt text](https://quicklatex.com/cache3/af/ql_24b321d31300626ba51b19665a42a1af_l3.png)
 
----
+Where:  
+- $\text{Score}_i$ = Final weighted score for solution $i$  
+- $w_j$ = Weight of objective $j$  
+- $\text{norm}(x_{ij})$ = Normalized value of objective $j$ for solution $i$
 
-## Business Use-Case
+### Expanded Example
 
-This model enables infrastructure teams to:
+$$\text{Score}_i = -0.4 \cdot \text{norm}(PUE_i) +
+                 0.3 \cdot \text{norm}(IXP_i) +
+                 0.2 \cdot \text{norm}(Service_i) -
+                 0.1 \cdot \text{norm}(Age_i)$$
 
-- Select optimal data centers that balance efficiency, connectivity, and service capability.
-- Improve long-term planning by prioritizing newer, well-connected, and energy-efficient facilities.
-- Customize weights to reflect business priorities (e.g., emphasize energy savings or compliance).
+*Negative weights are applied for objectives to be minimized.*
 
----
+## 6. Conclusion
 
-## Outputs
+The NSGA-II model provides a strategic, data-driven framework for selecting optimal data center combinations under multiple constraints and goals. It empowers decision-makers to visualize trade-offs and tailor selections to organizational priorities such as energy savings, connectivity, flexibility, and infrastructure modernization. The weighted scoring extension adds clarity and adaptability for final selection, turning a complex multi-objective optimization into an actionable business decision.
 
-- Weighted normalized scores for comparison
-
----
-
-## How to Run
-
-```bash
-python nsga_aggregator.py
-```
-
-Make sure to have `data-final.csv` in the working directory.
-
-
-
-![image](https://github.com/user-attachments/assets/cf2008dc-9a49-4f72-8e97-cb695a37a91a)
-
-
+$$\text{Score}_i = \sum_j (w_j \cdot \text{norm}(x_{ij}))$$
