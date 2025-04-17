@@ -61,14 +61,14 @@ We use **min-max normalization** to bring all parameters onto a comparable 0 to 
 - For **cost parameters** (lower is better):
 
 
-$/x'_i = (max(x) - x_i) / (max(x) - min(x))$
+$x'_i = (max(x) - x_i) / (max(x) - min(x))$
 
 
 - For **benefit parameters** (higher is better):
 
-```
-x'_i = (x_i - min(x)) / (max(x) - min(x))
-```
+
+$x'_i = (x_i - min(x)) / (max(x) - min(x))$
+
 
 ---
 
@@ -78,9 +78,9 @@ We calculate the **composite attraction score** for each city using the followin
 
 ### General Formula:
 
-```
-Score_i = ∑ (w_j * norm(x_ij))
-```
+
+$Score_i = ∑ (w_j * norm(x_ij))$
+
 
 Where:
 
@@ -90,16 +90,14 @@ Where:
 
 ### Expanded Example:
 
-```
-Score_i = 0.05 * norm(Water_i) +
+$$Score_i = 0.05 * norm(Water_i) +
           0.20 * norm(Energy_i) +
           0.05 * norm(Workforce_i) +
           0.10 * norm(Renewable_i) +
           0.15 * norm(LandCost_i) +
           0.05 * norm(LandAvail_i) +
           0.20 * norm(Network_i) +
-          0.10 * norm(Climate_i)
-```
+          0.10 * norm(Climate_i)$$
 
 Each city's normalized parameter values are multiplied by their respective weights and summed to give a final score. Cities are ranked based on this score to identify the most suitable data center location.
 
