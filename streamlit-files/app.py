@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
+import os
 
 
 # Set page config
@@ -28,11 +29,18 @@ BUILD_TO_SUIT = st.checkbox("Build To Suit")
 FOOTPRINTS = st.checkbox("Footprints")
 REMOTE_HANDS = st.checkbox("Remote Hands")
 
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Dynamically construct paths to the .pkl files
+rf_model_path = os.path.join(current_dir, "rf_model.pkl")
+scaler_path = os.path.join(current_dir, "scaler.pkl")
+
 # Load model and scaler (you need to export these from your training code)
 @st.cache_resource
 def load_model():
-    rf = joblib.load("./rf_model.pkl")
-    scaler = joblib.load("scaler.pkl")
+    rf = joblib.load(rf_model_path)
+    scaler = joblib.load(scaler_path)
     return rf, scaler
 
 rf_model, scaler = load_model()
