@@ -2,8 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.preprocessing import StandardScaler
+
 
 # Set page config
 st.set_page_config(page_title="Data Center Cluster Predictor", layout="centered")
@@ -32,7 +31,7 @@ REMOTE_HANDS = st.checkbox("Remote Hands")
 # Load model and scaler (you need to export these from your training code)
 @st.cache_resource
 def load_model():
-    rf = joblib.load("rf_model.pkl")
+    rf = joblib.load("DataCenterInfra/DataCenters-Infra-Expansion-CapstoneProject/streamlit-files/rf_model.pkl")
     scaler = joblib.load("scaler.pkl")
     return rf, scaler
 
