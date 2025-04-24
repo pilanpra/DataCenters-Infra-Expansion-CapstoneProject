@@ -31,7 +31,7 @@ REMOTE_HANDS = st.checkbox("Remote Hands")
 # Load model and scaler (you need to export these from your training code)
 @st.cache_resource
 def load_model():
-    rf = joblib.load("rf_model.pkl")
+    rf = joblib.load("./rf_model.pkl")
     scaler = joblib.load("scaler.pkl")
     return rf, scaler
 
