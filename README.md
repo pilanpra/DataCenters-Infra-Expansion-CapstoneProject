@@ -51,11 +51,11 @@ This project focuses on optimizing the **expansion of data center infrastructure
 
 ## 🗺️ Next Steps
 
-- [ ] Perform deeper EDA per cluster to understand traits of efficient vs. costly data centers.
-- [ ] Implement gravity-based optimization to score potential locations based on proximity to demand, cost, and renewables.
-- [ ] Formulate multi-objective MILP model for new data center placement.
-- [ ] Include a recommendation engine for site selection under cost and energy constraints.
-- [ ] Build a visual dashboard for decision-making and reporting.
+- [x] Perform deeper EDA per cluster to understand traits of efficient vs. costly data centers.
+- [x] Implement gravity-based optimization to score potential locations based on proximity to demand, cost, and renewables.
+- [x] Formulate multi-objective MILP model for new data center placement.
+- [x] Include a recommendation engine for site selection under cost and energy constraints.
+- [x] Build a visual dashboard for decision-making and reporting.
 
 ---
 
