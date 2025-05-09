@@ -43,9 +43,9 @@ This project focuses on optimizing the **expansion of data center infrastructure
 | Data Collection           | ✅ Complete |
 | Data Cleaning             | ✅ Complete |
 | Clustering Analysis       | ✅ Complete |
-| Exploratory Data Analysis | 🟡 In Progress |
-| Optimization Modeling     | 🔜 Upcoming |
-| Reporting & Deployment    | 🔜 Upcoming |
+| Exploratory Data Analysis | ✅ Complete |
+| Optimization Modeling     | ✅ Complete |
+| Reporting & Deployment    | ✅ Complete |
 
 ---
 
